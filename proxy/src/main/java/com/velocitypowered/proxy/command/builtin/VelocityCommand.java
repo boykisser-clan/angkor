@@ -172,7 +172,7 @@ public final class VelocityCommand {
       source.sendMessage(velocity);
       source.sendMessage(copyright);
 
-      if (version.getName().equals("Velocity")) {
+       if (version.getName().equals("Angkor")) {
         final TextComponent embellishment = Component.text()
             .append(Component.text()
                 .content("PaperMC")

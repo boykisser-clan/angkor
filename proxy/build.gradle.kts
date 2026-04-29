@@ -27,6 +27,9 @@ tasks {
     }
 
     shadowJar {
+        archiveBaseName.set("angkor")
+        archiveVersion.set(project.version.toString())
+
         filesMatching("META-INF/org/apache/logging/log4j/core/config/plugins/**") {
             duplicatesStrategy = DuplicatesStrategy.INCLUDE
         }
@@ -172,4 +175,10 @@ dependencies {
 
     annotationProcessor(libs.auto.service)
     annotationProcessor(libs.log4j.core)
+}
+
+dependencies {
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.yaml:snakeyaml:2.2")
+    implementation("io.netty:netty-all:4.1.97.Final")
 }
