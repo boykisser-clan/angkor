@@ -6,6 +6,7 @@ plugins {
     id("velocity-init-manifest")
     alias(libs.plugins.shadow)
     alias(libs.plugins.fill)
+    `maven-publish`
 }
 
 application {
@@ -181,4 +182,26 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("org.yaml:snakeyaml:2.2")
     implementation("io.netty:netty-all:4.1.97.Final")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.krudstudio"
+            artifactId = "angkor"
+            version = project.version.toString()
+
+            from(components["java"])
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/boykisser-clan/angkor")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
