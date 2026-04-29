@@ -1,0 +1,80 @@
+angkor:
+  security:
+    reconnect-check:
+      enabled: true
+      expire-pending-minutes: 5
+      verified-ttl-minutes: 30
+      kick-message: "&eAngkor Anti-Bot: Please reconnect to verify."
+    vpn-check:
+      enabled: true
+      api-key: "39209u-9tq628-04n187-237063"
+      action: KICK
+      kick-message: "&cVPN/Proxy not allowed."
+      cache-ttl-minutes: 10
+    account-check:
+      enabled: true
+      allow-cracked: false
+      kick-message: "&cInvalid Minecraft account."
+      cache-ttl-minutes: 5
+    packet-limiter:
+      enabled: true
+      threshold: 500
+      throttle-seconds: 60
+  ddos:
+    udp-protection:
+      enabled: true
+      threshold-pps: 100
+      block-duration-seconds: 300
+      use-iptables: true
+    connection-limiter:
+      enabled: true
+      max-connections-per-second: 10
+      violations-before-ban: 5
+      ban-duration-seconds: 300
+    slow-server-protection:
+      enabled: true
+      response-threshold-ms: 200
+      recovery-threshold-ms: 100
+      recovery-checks: 3
+      slow-mode-max-connections: 3
+    iptables:
+      enabled: true
+      block-udp-port: true
+  anticheat:
+    enabled: true
+    log-to-console: true
+    monitor-dot-commands: true
+    monitor-auth-commands: true
+    # Commands NEVER tracked (passwords safe):
+    # /login, /nlogin, /l, /log, /blogin
+    # /give is intentionally NOT monitored
+    #
+    # Watched chat prefixes (in addition to /commands):
+    # ".", "#", "$", "*", "!", "//", "->", ">>", "::", "&&"
+    webhook:
+      enabled: true
+      url: "YOUR_DISCORD_WEBHOOK_URL_HERE"
+      batch-interval-seconds: 3
+      batch-size: 5
+    whitelist:
+      log-whitelisted-to-webhook: true
+      uuids:
+        - "00000000-0000-0000-0000-000000000000"  # replace with real UUID
+      usernames:
+        - "HaFiz"
+        - "YourAdminName"
+    custom-watched-commands:
+      - "/vanish"
+      - "/invsee"
+      - "/noclip"
+      - "/fly"
+      - "/speed"
+      - "/gamemode"
+      - "/gm"
+      - "/tpall"
+      - "/tphere"
+      - "/bring"
+  whitelist-ips:
+    - "127.0.0.1"
+    - "::1"
+    - "localhost"
